@@ -1,0 +1,58 @@
+Q17: Write a program to find the roots of a quadratic equation and categorize them.
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float a, b, c, discriminant, root1, root2, realPart, imagPart;
+    printf("Enter coefficients a, b, c: ");
+    scanf("%f %f %f", &a, &b, &c);
+    discriminant = b * b - 4 * a * c;
+
+    if (discriminant > 0) {
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("Roots are real and different: %.0f, %.0f\n", root1, root2);
+    }
+    else if (discriminant == 0) {
+        // real and same root
+        root1 = -b / (2 * a);
+        printf("Roots are real and same: %.0f\n", root1);
+    }
+    else {
+        realPart = -b / (2 * a);
+        imagPart = sqrt(-discriminant) / (2 * a);
+        printf("Roots are complex\n");
+    }
+
+    return 0;
+}
+
+Q18: Write a program to assign grades based on a percentage input.
+
+#include <stdio.h>
+
+int main() {
+    int percentage;
+
+    printf("Enter percentage: ");
+    scanf("%d", &percentage);
+
+    if (percentage >= 90) {
+        printf("Grade A\n");
+    }
+    else if (percentage >= 80) {
+        printf("Grade B\n");
+    }
+    else if (percentage >= 70) {
+        printf("Grade C\n");
+    }
+    else if (percentage >= 60) {
+        printf("Grade D\n");
+    }
+    else {
+        printf("Grade F\n");
+    }
+
+    return 0;
+}
