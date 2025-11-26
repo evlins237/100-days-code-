@@ -1,0 +1,56 @@
+Q97: Print the initials of a name.
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char name[100];
+    printf("Enter full name: ");
+    fgets(name, sizeof(name), stdin);
+
+    name[strcspn(name, "\n")] = '\0';
+
+    int len = strlen(name);
+
+    for (int i = 0; i < len; i++) {
+      
+        if (i == 0 || name[i-1] == ' ') {
+            printf("%c.", toupper(name[i]));
+        }
+    }
+
+    printf("\n");
+    return 0;
+}
+
+Q98: Print initials of a name with the surname displayed in full.
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char name[100];
+    fgets(name, sizeof(name), stdin);  
+    
+    int len = strlen(name);
+    if (name[len - 1] == '\n')
+        name[len - 1] = '\0'; 
+
+    char *token = strtok(name, " ");
+    char initials[50] = "";
+    char surname[50] = "";
+
+    while (token != NULL) {
+        strcpy(surname, token);  
+        token = strtok(NULL, " ");
+        if (token != NULL) {
+            char ch[4];
+            sprintf(ch, "%c.", surname[0]);  
+            strcat(initials, ch);
+        }
+    }
+
+    printf("%s %s\n", initials, surname);
+    return 0;
+}
